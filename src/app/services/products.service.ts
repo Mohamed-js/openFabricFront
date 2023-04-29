@@ -5,10 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductsService {
+  base: string = "https://openfabricapi.onrender.com"
 
   constructor(private http: HttpClient) {}
   getProducts() {
-    return this.http.get('http://127.0.0.1:3000/products/',{
+    return this.http.get(`${this.base}/products/`,{
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -17,7 +18,7 @@ export class ProductsService {
   }
 
   getProduct(id: String) {
-    return this.http.get(`http://127.0.0.1:3000/products/${id}`,{
+    return this.http.get(`${this.base}/products/${id}`,{
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -26,7 +27,7 @@ export class ProductsService {
   }
 
   createProduct(val:any){
-    return this.http.post(`http://127.0.0.1:3000/products/`,
+    return this.http.post(`${this.base}/products/`,
       val, {
       headers: {
         "Accept": "application/json",
@@ -36,7 +37,7 @@ export class ProductsService {
   }
 
   updateProduct(body: any, id: string){
-    return this.http.patch(`http://127.0.0.1:3000/products/${id}`,
+    return this.http.patch(`${this.base}/products/${id}`,
       body, {
       headers: {
         "Content-Type": "application/json",
