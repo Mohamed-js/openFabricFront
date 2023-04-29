@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  base: string = "https://openfabricapi.onrender.com"
+  base: string = isDevMode() ? "http://localhost:3000" : "https://openfabricapi.onrender.com"
 
   constructor(private http: HttpClient) {}
   getProducts() {
